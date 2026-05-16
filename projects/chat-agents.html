@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chatbot AI Agents Sample Works, John Carlo Caintic</title>
+<meta name="description" content="Intelligent conversational AI agents, web chat widgets, SMS bots, and embedded assistants trained on your CRM and docs. Sample works from John Carlo Caintic." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/blog/blog.css" />
+<style>
+  .proj-hero { max-width: 980px; margin: 0 auto 64px; text-align: center; }
+  .proj-hero .eyebrow { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; }
+  .proj-hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 6vw, 72px); line-height: 1.02; letter-spacing: -0.03em; text-wrap: balance; margin-bottom: 18px; }
+  .proj-hero h1 em { font-style: italic; color: var(--accent); }
+  .proj-hero p { font-size: clamp(17px, 1.3vw, 20px); color: var(--ink-dim); line-height: 1.55; max-width: 720px; margin: 0 auto; }
+
+  .try-chat-btn {
+    margin: 32px auto 0;
+    position: relative;
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 20px 32px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-sans);
+    font-size: 16px; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    text-decoration: none; white-space: nowrap;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease;
+    animation: try-pulse 2.4s ease-in-out infinite;
+    cursor: pointer;
+  }
+  .try-chat-btn .arrow {
+    display: inline-block;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1);
+    font-size: 20px; line-height: 1;
+  }
+  .try-chat-btn::before {
+    content: "";
+    position: absolute; top: 0; left: -150%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-20deg);
+    transition: left .7s cubic-bezier(.2,.7,.2,1);
+    pointer-events: none;
+  }
+  .try-chat-btn:hover {
+    transform: scale(1.06);
+    animation-play-state: paused;
+    box-shadow: 0 14px 40px color-mix(in oklab, var(--accent) 50%, transparent),
+                0 0 0 1px color-mix(in oklab, var(--accent) 80%, transparent);
+  }
+  .try-chat-btn:hover .arrow { transform: translateX(8px); }
+  .try-chat-btn:hover::before { left: 150%; }
+  @keyframes try-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 55%, transparent); }
+    50%      { box-shadow: 0 0 0 16px color-mix(in oklab, var(--accent) 0%, transparent); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .try-chat-btn { animation: none !important; }
+    .try-chat-btn::before { display: none; }
+  }
+  .try-chat-hint {
+    margin-top: 14px;
+    font-family: var(--font-mono); font-size: 12px;
+    color: var(--ink-dim); letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .try-chat-hint span { color: var(--accent); }
+
+  .platform-section { max-width: 1200px; margin: 0 auto 80px; }
+  .platform-head {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 32px; padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .platform-head .num { font-family: var(--font-mono); font-size: 13px; color: var(--ink-mute); letter-spacing: 0.1em; }
+  .platform-head h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.05; letter-spacing: -0.025em; }
+  .platform-head h2 em { font-style: italic; color: var(--accent); }
+  .platform-head .count { margin-left: auto; font-family: var(--font-mono); font-size: 12px; color: var(--ink-dim); letter-spacing: 0.08em; }
+
+  .ss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+  .ss-card {
+    border: 1px solid var(--line); border-radius: 14px;
+    background: var(--bg-elev);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+    transition: border-color .25s, transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .25s;
+    display: block; text-decoration: none; color: inherit;
+  }
+  .ss-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 24px color-mix(in oklab, var(--accent) 20%, transparent); }
+  .ss-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.2,.7,.2,1); background: var(--bg-soft); }
+  .ss-card:hover img { transform: scale(1.03); }
+  .ss-card .ss-label {
+    position: absolute; left: 12px; bottom: 12px; right: 12px;
+    font-family: var(--font-mono); font-size: 11px; color: var(--ink);
+    background: rgba(5,8,16,0.85); padding: 6px 10px; border-radius: 6px;
+    letter-spacing: 0.05em; backdrop-filter: blur(8px);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .ss-card .ss-label .open { color: var(--accent); font-size: 11px; }
+  .ss-card .ss-num {
+    position: absolute; left: 12px; top: 12px;
+    font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+    color: var(--accent-ink); background: var(--accent);
+    padding: 4px 8px; border-radius: 999px;
+    letter-spacing: 0.08em; text-transform: uppercase; z-index: 2;
+  }
+
+  .source-links { max-width: 1100px; margin: 0 auto 80px; padding: 32px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-elev); }
+  .source-links h3 { font-family: var(--font-display); font-weight: 400; font-size: 22px; margin-bottom: 18px; }
+  .source-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .source-links li a { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); font-family: var(--font-mono); font-size: 13px; transition: border-color .25s, color .25s; }
+  .source-links li a:hover { border-color: var(--accent); color: var(--accent); }
+  .source-links li a .arrow { margin-left: auto; }
+
+  .final-cta { max-width: 980px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<div class="nav-wrap">
+  <nav class="nav-pill">
+    <a href="/" class="brand">John<span>Carlo</span></a>
+    <div class="links">
+      <a href="/#services">Systems</a>
+      <a href="/#about">Experience</a>
+      <a href="/#work">Sample Works</a>
+      <a href="/#testimonials">Testimonials</a>
+      <a href="/book.html">Contact</a>
+    </div>
+    <a href="/book.html" class="cta">Let's talk
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </a>
+  </nav>
+</div>
+
+<main>
+  <div style="max-width: 1200px; margin: 0 auto 32px;">
+    <a href="/#work" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11 7H3m3-3-3 3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      Back to sample works
+    </a>
+  </div>
+
+  <div class="proj-hero">
+    <div class="eyebrow">● P-02 · Chatbot AI Agents</div>
+    <h1>Intelligent <em>conversational AI agents</em> trained on your business.</h1>
+    <p>Web chat widgets, SMS bots, and embedded assistants, trained on your docs and CRM data. They handle customer inquiries, qualify leads, and automate support, with clean handoffs to a human when judgement is needed.</p>
+    <a class="try-chat-btn" href="https://app.gohighlevel.com/v2/preview/FgHmjknvJFZyfxB9XgoK" target="_blank" rel="noopener noreferrer">
+      Try the Live Chatbot AI Agent
+      <span class="arrow">→</span>
+    </a>
+    <div class="try-chat-hint">
+      <span>● Live demo</span> &nbsp;Talk to a real working chatbot, opens in a new tab.
+    </div>
+  </div>
+
+  <section class="platform-section">
+    <div class="platform-head">
+      <span class="num">01</span>
+      <h2>Chatbot AI agent <em>workflow screenshots</em></h2>
+      <span class="count">23 sample builds</span>
+    </div>
+    <div class="ss-grid">
+      <a class="ss-card" href="https://drive.google.com/file/d/1-2lJJLNES0LwGVDwrvJ72I8MJ7X-49Kl/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">01</span>
+        <img src="https://lh3.googleusercontent.com/d/1-2lJJLNES0LwGVDwrvJ72I8MJ7X-49Kl=w1600" alt="Chatbot AI agent workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>Chatbot AI agent · 01</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1Xtr_AfFc_wPIzlxpqv06N5XEFeBsP4Jj/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">02</span>
+        <img src="https://lh3.googleusercontent.com/d/1Xtr_AfFc_wPIzlxpqv06N5XEFeBsP4Jj=w1600" alt="Chatbot AI agent workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>Chatbot AI agent · 02</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1GyVjsjc8XqFFN6Px7MgGu7Kx7qw1EKL-/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">03</span>
+        <img src="https://lh3.googleusercontent.com/d/1GyVjsjc8XqFFN6Px7MgGu7Kx7qw1EKL-=w1600" alt="Chatbot AI agent workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>Chatbot AI agent · 03</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1Deoa1ymw3UkxNsMKPEdoZn-MdGnSB_bj/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">04</span>
+        <img src="https://lh3.googleusercontent.com/d/1Deoa1ymw3UkxNsMKPEdoZn-MdGnSB_bj=w1600" alt="Chatbot AI agent workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>Chatbot AI agent · 04</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1wA1cwhyCJJqOEVAMMeLO0q2D1zs3VJQl/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">05</span>
+        <img src="https://lh3.googleusercontent.com/d/1wA1cwhyCJJqOEVAMMeLO0q2D1zs3VJQl=w1600" alt="BODC inbound bot, part 1" loading="lazy" />
+        <div class="ss-label"><span>BODC · Inbound bot 1</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1l3CtDtkVoqQWjvMGBLFI0LvWrMaO0lpd/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">06</span>
+        <img src="https://lh3.googleusercontent.com/d/1l3CtDtkVoqQWjvMGBLFI0LvWrMaO0lpd=w1600" alt="BODC inbound bot, part 2" loading="lazy" />
+        <div class="ss-label"><span>BODC · Inbound bot 2</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/12htagX2u62VnHtcAjjYwGqZeHNiVirxa/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">07</span>
+        <img src="https://lh3.googleusercontent.com/d/12htagX2u62VnHtcAjjYwGqZeHNiVirxa=w1600" alt="DEMO post voice AI, part 1" loading="lazy" />
+        <div class="ss-label"><span>DEMO · Post Voice AI 1</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1k8SqCD9pZT5f0xt60nRwSnXX3NT-muWy/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">08</span>
+        <img src="https://lh3.googleusercontent.com/d/1k8SqCD9pZT5f0xt60nRwSnXX3NT-muWy=w1600" alt="DEMO self-selling intro, part 2" loading="lazy" />
+        <div class="ss-label"><span>DEMO · Self Selling Intro 2</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1qJVTR5Vb1hwJBG_-dLKYrE4xPsUtZIiz/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">09</span>
+        <img src="https://lh3.googleusercontent.com/d/1qJVTR5Vb1hwJBG_-dLKYrE4xPsUtZIiz=w1600" alt="DEMO self-selling progress, part 1" loading="lazy" />
+        <div class="ss-label"><span>DEMO · Self Selling Progress 1</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1odS2b2oJ9mViYpbEeuT6Mj4gp_KKsACO/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">10</span>
+        <img src="https://lh3.googleusercontent.com/d/1odS2b2oJ9mViYpbEeuT6Mj4gp_KKsACO=w1600" alt="DEMO self-selling progress, part 2" loading="lazy" />
+        <div class="ss-label"><span>DEMO · Self Selling Progress 2</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1Pc7mpm0guVlMgFmbSgIXIrHKiWLIZIrZ/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">11</span>
+        <img src="https://lh3.googleusercontent.com/d/1Pc7mpm0guVlMgFmbSgIXIrHKiWLIZIrZ=w1600" alt="DEMO self-selling progress, part 3" loading="lazy" />
+        <div class="ss-label"><span>DEMO · Self Selling Progress 3</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1vMaz1srh81VUXuTGD2sJralPTbuS6QJl/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">12</span>
+        <img src="https://lh3.googleusercontent.com/d/1vMaz1srh81VUXuTGD2sJralPTbuS6QJl=w1600" alt="DHB DBR bot, part 1" loading="lazy" />
+        <div class="ss-label"><span>DHB · DBR bot 1</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1o8X_QKJ4u6TsV8D8nw3zHeOnOS0C7b3I/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">13</span>
+        <img src="https://lh3.googleusercontent.com/d/1o8X_QKJ4u6TsV8D8nw3zHeOnOS0C7b3I=w1600" alt="DHB DBR bot, part 2" loading="lazy" />
+        <div class="ss-label"><span>DHB · DBR bot 2</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1krHVk-SPOpHP0mfNHOYKhHGlEWyF_hoS/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">14</span>
+        <img src="https://lh3.googleusercontent.com/d/1krHVk-SPOpHP0mfNHOYKhHGlEWyF_hoS=w1600" alt="DHB DBR bot, part 3" loading="lazy" />
+        <div class="ss-label"><span>DHB · DBR bot 3</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1w3UzAIanHzaqVVtb3HJT6OSOptV6meR3/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">15</span>
+        <img src="https://lh3.googleusercontent.com/d/1w3UzAIanHzaqVVtb3HJT6OSOptV6meR3=w1600" alt="LLHB DBR, part 1" loading="lazy" />
+        <div class="ss-label"><span>LLHB · DBR 1</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1OnUckqQk3_87shcNEpmw8ffyICosxhJu/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">16</span>
+        <img src="https://lh3.googleusercontent.com/d/1OnUckqQk3_87shcNEpmw8ffyICosxhJu=w1600" alt="LLHB DBR, part 2" loading="lazy" />
+        <div class="ss-label"><span>LLHB · DBR 2</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1wmpOaiNbI0f-mx8l18Mvwrtk1Rlet05z/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">17</span>
+        <img src="https://lh3.googleusercontent.com/d/1wmpOaiNbI0f-mx8l18Mvwrtk1Rlet05z=w1600" alt="LLHB inbound bot, part 1" loading="lazy" />
+        <div class="ss-label"><span>LLHB · Inbound bot 1</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1GpvmySOwCKgZFER2thHL-eUQqwPh0gY_/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">18</span>
+        <img src="https://lh3.googleusercontent.com/d/1GpvmySOwCKgZFER2thHL-eUQqwPh0gY_=w1600" alt="LLHB inbound bot, part 2" loading="lazy" />
+        <div class="ss-label"><span>LLHB · Inbound bot 2</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1n-FxNsEVQ7chGKhSkS9h-ShO-Bp-vNAO/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">19</span>
+        <img src="https://lh3.googleusercontent.com/d/1n-FxNsEVQ7chGKhSkS9h-ShO-Bp-vNAO=w1600" alt="MHS DBR bot, part 2" loading="lazy" />
+        <div class="ss-label"><span>MHS · DBR bot 2</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1bDoTknEg2G6GNOjuphqj6nNhFGCVIJ3f/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">20</span>
+        <img src="https://lh3.googleusercontent.com/d/1bDoTknEg2G6GNOjuphqj6nNhFGCVIJ3f=w1600" alt="Chatbot AI agent workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>Chatbot AI agent · 20</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1cfJGt9zOm_O-AUhTJr3lcuiJRrgsHI4u/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">21</span>
+        <img src="https://lh3.googleusercontent.com/d/1cfJGt9zOm_O-AUhTJr3lcuiJRrgsHI4u=w1600" alt="Chatbot AI agent workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>Chatbot AI agent · 21</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1h6VMcPAfzbjghzaG0E13N80290si96m-/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">22</span>
+        <img src="https://lh3.googleusercontent.com/d/1h6VMcPAfzbjghzaG0E13N80290si96m-=w1600" alt="Chatbot AI agent workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>Chatbot AI agent · 22</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1ZOJfR_QPeBRGmB8CGxICFXCmUYGtLs-E/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">23</span>
+        <img src="https://lh3.googleusercontent.com/d/1ZOJfR_QPeBRGmB8CGxICFXCmUYGtLs-E=w1600" alt="Chatbot AI agent workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>Chatbot AI agent · 23</span><span class="open">View ↗</span></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="source-links">
+    <h3>Source documentation &amp; assets</h3>
+    <ul>
+      <li>
+        <a href="https://drive.google.com/drive/folders/1ZKkcMaVpgTwk5y59xUen0OBv-Uzkdjn-" target="_blank" rel="noopener noreferrer">
+          <span style="color: var(--accent);">●</span>
+          <span>Chatbot AI agent, original screenshots folder</span>
+          <span class="arrow">↗</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://drive.google.com/drive/folders/11lG4zZBrCfpG0zJxGE6wZC9_IL8rpFzH" target="_blank" rel="noopener noreferrer">
+          <span style="color: var(--accent);">●</span>
+          <span>Chatbot AI agent, client builds folder (BODC, DEMO, DHB, LLHB, MHS)</span>
+          <span class="arrow">↗</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="final-cta">
+    <div class="cta-card">
+      <h3>Need a chatbot AI agent for your business?</h3>
+      <p>30-minute call. We'll map your support volume, your most common questions, and scope a chatbot AI agent that handles the boring 80% so your team can focus on the rest.</p>
+      <a href="/book.html" class="cta-button">Book a discovery call
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-row">
+    <div>Full Stack AI Development</div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/john-carlo-caintic-6193a8268/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:cainticjohncarlo@gmail.com">Email</a>
+    </div>
+  </div>
+  <div class="footer-row bottom">
+    <span>© 2026, All rights reserved</span>
+    <div class="legal">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

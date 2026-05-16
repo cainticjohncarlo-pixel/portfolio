@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Automations &amp; Workflows Projects, John Carlo Caintic</title>
+<meta name="description" content="Sample works from John Carlo Caintic, end-to-end automation systems built across n8n, Make, and Zapier. Lead gen, onboarding, AI content, voice agents, and full workflow systems." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/blog/blog.css" />
+<style>
+  .proj-hero {
+    max-width: 980px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+  .proj-hero .eyebrow {
+    font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px;
+  }
+  .proj-hero h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.02; letter-spacing: -0.03em;
+    text-wrap: balance; margin-bottom: 18px;
+  }
+  .proj-hero h1 em { font-style: italic; color: var(--accent); }
+  .proj-hero p {
+    font-size: clamp(17px, 1.3vw, 20px);
+    color: var(--ink-dim); line-height: 1.55;
+    max-width: 720px; margin: 0 auto;
+  }
+
+  .video-wrap {
+    max-width: 980px; margin: 0 auto 80px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    background: var(--bg-elev);
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+  }
+  .video-wrap .label {
+    padding: 16px 24px;
+    font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-soft);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .video-wrap .label .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--ink-dim); text-transform: none; letter-spacing: 0.04em;
+  }
+  .video-wrap .frame { aspect-ratio: 16 / 9; background: #000; }
+  .video-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+  .platform-section {
+    max-width: 1100px; margin: 0 auto 80px;
+  }
+  .platform-head {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .platform-head .num {
+    font-family: var(--font-mono); font-size: 13px; color: var(--ink-mute);
+    letter-spacing: 0.1em;
+  }
+  .platform-head h2 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.05; letter-spacing: -0.025em;
+  }
+  .platform-head h2 em { font-style: italic; color: var(--accent); }
+  .platform-head .count {
+    margin-left: auto;
+    font-family: var(--font-mono); font-size: 12px; color: var(--ink-dim);
+    letter-spacing: 0.08em;
+  }
+
+  /* Detailed cards (n8n) */
+  .det-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .det-card {
+    border: 1px solid var(--line); border-radius: var(--radius-lg);
+    background: var(--bg-elev);
+    padding: 28px 26px;
+    display: flex; flex-direction: column; gap: 14px;
+    transition: border-color .25s, transform .25s;
+  }
+  .det-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .det-card .num {
+    font-family: var(--font-mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .det-card h3 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: 24px; line-height: 1.15; letter-spacing: -0.015em;
+  }
+  .det-card p { color: var(--ink-dim); font-size: 15px; line-height: 1.6; flex-grow: 1; }
+
+  /* Compact tag grid (make) */
+  .tag-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+  }
+  .tag-card {
+    border: 1px solid var(--line); border-radius: 12px;
+    background: var(--bg-elev);
+    padding: 16px 18px;
+    display: flex; align-items: center; gap: 14px;
+    transition: border-color .25s, background .25s;
+  }
+  .tag-card:hover { border-color: var(--accent); background: var(--bg-soft); }
+  .tag-card .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+    flex-shrink: 0;
+  }
+  .tag-card span {
+    font-size: 14px; color: var(--ink); letter-spacing: -0.005em;
+  }
+
+  /* Category pills above each Make group */
+  .group-label {
+    font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin: 28px 0 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .group-label::before {
+    content: ""; width: 24px; height: 1px; background: var(--accent);
+  }
+  .group-label:first-child { margin-top: 0; }
+
+  /* Screenshot grid (Zapier) */
+  .ss-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .ss-card {
+    border: 1px solid var(--line); border-radius: 14px;
+    background: var(--bg-elev);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+    transition: border-color .25s, transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .25s;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .ss-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 24px color-mix(in oklab, var(--accent) 20%, transparent);
+  }
+  .ss-card img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1);
+    background: var(--bg-soft);
+  }
+  .ss-card:hover img { transform: scale(1.03); }
+  .ss-card .ss-label {
+    position: absolute; left: 12px; bottom: 12px; right: 12px;
+    font-family: var(--font-mono); font-size: 11px; color: var(--ink);
+    background: rgba(5,8,16,0.85); padding: 6px 10px; border-radius: 6px;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(8px);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .ss-card .ss-label .open {
+    color: var(--accent); font-size: 11px;
+  }
+  .ss-card .ss-num {
+    position: absolute; left: 12px; top: 12px;
+    font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+    color: var(--accent-ink); background: var(--accent);
+    padding: 4px 8px; border-radius: 999px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .source-links {
+    max-width: 1100px; margin: 0 auto 80px;
+    padding: 32px;
+    border: 1px solid var(--line); border-radius: var(--radius-lg);
+    background: var(--bg-elev);
+  }
+  .source-links h3 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: 22px; margin-bottom: 18px;
+  }
+  .source-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .source-links li a {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px;
+    background: var(--bg);
+    font-family: var(--font-mono); font-size: 13px;
+    transition: border-color .25s, color .25s;
+  }
+  .source-links li a:hover { border-color: var(--accent); color: var(--accent); }
+  .source-links li a .arrow { margin-left: auto; }
+
+  .final-cta { max-width: 980px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<div class="nav-wrap">
+  <nav class="nav-pill">
+    <a href="/" class="brand">John<span>Carlo</span></a>
+    <div class="links">
+      <a href="/#services">Systems</a>
+      <a href="/#about">Experience</a>
+      <a href="/#work">Sample Works</a>
+      <a href="/#testimonials">Testimonials</a>
+      <a href="/book.html">Contact</a>
+    </div>
+    <a href="/book.html" class="cta">Let's talk
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </a>
+  </nav>
+</div>
+
+<main>
+  <div style="max-width: 1100px; margin: 0 auto 32px;">
+    <a href="/#work" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11 7H3m3-3-3 3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      Back to sample works
+    </a>
+  </div>
+
+  <div class="proj-hero">
+    <div class="eyebrow">● P-01 · AI Automations &amp; Workflows</div>
+    <h1>End-to-end <em>automation systems</em> shipped across n8n, Make, Zapier, and GoHighLevel, built with <em>Claude Code</em>.</h1>
+    <p>A representative cross-section of automation builds, onboarding agents, sales pipelines, AI content production, lead generation, voice systems, and operational workflows. Built across the four platforms I reach for first, integrated with CRMs, calendars, AI models, and the rest of the stack underneath, and accelerated with Claude Code so workflows ship in days, not weeks.</p>
+  </div>
+
+  <!-- Video walkthrough -->
+  <div class="video-wrap">
+    <div class="label">
+      <span>● Video walkthrough</span>
+      <span class="pill">AI Automation Systems · sample reel</span>
+    </div>
+    <div class="frame">
+      <iframe src="https://drive.google.com/file/d/1AqeuL_jirkqUth2MI8fJHqlhDvdTfw39/preview" allow="autoplay" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- N8N section -->
+  <section class="platform-section">
+    <div class="platform-head">
+      <span class="num">01</span>
+      <h2>n8n <em>automation projects</em></h2>
+      <span class="count">11 sample builds</span>
+    </div>
+
+    <div>
+      <div class="group-label" style="margin: 0 0 16px;">Workflow screenshots</div>
+      <div class="ss-grid">
+        <a class="ss-card" href="https://drive.google.com/file/d/1VleeyHoKFFwkyQ-MDQMX2dfdQa4rgBKl/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">01</span>
+          <img src="https://lh3.googleusercontent.com/d/1VleeyHoKFFwkyQ-MDQMX2dfdQa4rgBKl=w1600" alt="n8n workflow screenshot" loading="lazy" />
+          <div class="ss-label"><span>n8n workflow · 01</span><span class="open">View ↗</span></div>
+        </a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1i9VN_1s99Y8pEnK-aaqU7SR4Sj8xUhJL/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">02</span>
+          <img src="https://lh3.googleusercontent.com/d/1i9VN_1s99Y8pEnK-aaqU7SR4Sj8xUhJL=w1600" alt="n8n workflow screenshot" loading="lazy" />
+          <div class="ss-label"><span>n8n workflow · 02</span><span class="open">View ↗</span></div>
+        </a>
+        <a class="ss-card" href="https://drive.google.com/file/d/18EQserodMKk0dKZvJUdWIpjf8QUvhfb0/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">03</span>
+          <img src="https://lh3.googleusercontent.com/d/18EQserodMKk0dKZvJUdWIpjf8QUvhfb0=w1600" alt="n8n workflow screenshot" loading="lazy" />
+          <div class="ss-label"><span>n8n workflow · 03</span><span class="open">View ↗</span></div>
+        </a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1Ypgk6Le4Q9yv5eKSWEt66fQaSQSgW3WM/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">04</span>
+          <img src="https://lh3.googleusercontent.com/d/1Ypgk6Le4Q9yv5eKSWEt66fQaSQSgW3WM=w1600" alt="n8n workflow screenshot" loading="lazy" />
+          <div class="ss-label"><span>n8n workflow · 04</span><span class="open">View ↗</span></div>
+        </a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1ZJXVu_4hML9i5NIs2TfgdXzU9qFfxx0B/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">05</span>
+          <img src="https://lh3.googleusercontent.com/d/1ZJXVu_4hML9i5NIs2TfgdXzU9qFfxx0B=w1600" alt="n8n workflow screenshot" loading="lazy" />
+          <div class="ss-label"><span>n8n workflow · 05</span><span class="open">View ↗</span></div>
+        </a>
+        <a class="ss-card" href="https://drive.google.com/file/d/18XpktPY3DEVepljd2kysnNh12xzfSQRI/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">06</span>
+          <img src="https://lh3.googleusercontent.com/d/18XpktPY3DEVepljd2kysnNh12xzfSQRI=w1600" alt="n8n workflow screenshot" loading="lazy" />
+          <div class="ss-label"><span>n8n workflow · 06</span><span class="open">View ↗</span></div>
+        </a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1yvZwy70lYXCL8Du1Z9sOFdHNPWC8QuOO/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">07</span>
+          <img src="https://lh3.googleusercontent.com/d/1yvZwy70lYXCL8Du1Z9sOFdHNPWC8QuOO=w1600" alt="n8n workflow screenshot" loading="lazy" />
+          <div class="ss-label"><span>n8n workflow · 07</span><span class="open">View ↗</span></div>
+        </a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1yLWCVFROY7cctkBvhGGyEUviJPsbBhQI/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">08</span>
+          <img src="https://lh3.googleusercontent.com/d/1yLWCVFROY7cctkBvhGGyEUviJPsbBhQI=w1600" alt="n8n workflow screenshot" loading="lazy" />
+          <div class="ss-label"><span>n8n workflow · 08</span><span class="open">View ↗</span></div>
+        </a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1CyAbkkcS012U1twrNneVniPUEEo7WNLT/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">09</span>
+          <img src="https://lh3.googleusercontent.com/d/1CyAbkkcS012U1twrNneVniPUEEo7WNLT=w1600" alt="Sales Agent multi-flow system: CRM Agent, Follow-Up Agent, Concierge Agent, and No-Show Agent" loading="lazy" />
+          <div class="ss-label"><span>Sales Agent · multi-flow</span><span class="open">View ↗</span></div>
+        </a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1xzjhNCXUtCrXfKHvViRUYjlrD8ZTnEdh/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">10</span>
+          <img src="https://lh3.googleusercontent.com/d/1xzjhNCXUtCrXfKHvViRUYjlrD8ZTnEdh=w1600" alt="Contract automation system: creation, signed monitoring, onboarding folder creation, Google Workspace method" loading="lazy" />
+          <div class="ss-label"><span>Contract automation</span><span class="open">View ↗</span></div>
+        </a>
+        <a class="ss-card" href="https://drive.google.com/file/d/11EX5_FRx70njiwGK0e0Ubzm8mWBxbiR8/view" target="_blank" rel="noopener noreferrer">
+          <span class="ss-num">11</span>
+          <img src="https://lh3.googleusercontent.com/d/11EX5_FRx70njiwGK0e0Ubzm8mWBxbiR8=w1600" alt="AI image and video generation workflow with Anthropic Chat Models and structured output" loading="lazy" />
+          <div class="ss-label"><span>AI image &amp; video workflow</span><span class="open">View ↗</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Make section -->
+  <section class="platform-section">
+    <div class="platform-head">
+      <span class="num">02</span>
+      <h2>Make <em>automation projects</em></h2>
+      <span class="count">12 sample workflows</span>
+    </div>
+
+    <div>
+      <div class="group-label" style="margin: 0 0 16px;">Workflow screenshots</div>
+      <div class="ss-grid">
+        <a class="ss-card" href="https://drive.google.com/file/d/1Gs_YJfDVZMqOroqRMJUDi0putlKYe-FV/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">01</span><img src="https://lh3.googleusercontent.com/d/1Gs_YJfDVZMqOroqRMJUDi0putlKYe-FV=w1600" alt="AI Agent bot, Make scenario" loading="lazy" /><div class="ss-label"><span>AI Agent bot</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1X4gEX2MfGbqm2IwVGbZRAoGOASz45OYi/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">02</span><img src="https://lh3.googleusercontent.com/d/1X4gEX2MfGbqm2IwVGbZRAoGOASz45OYi=w1600" alt="AI Voice Agents Automations" loading="lazy" /><div class="ss-label"><span>AI Voice Agents</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/112uE6LaHEewLz_ZgBGS9Dvp4mrqVlPf3/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">03</span><img src="https://lh3.googleusercontent.com/d/112uE6LaHEewLz_ZgBGS9Dvp4mrqVlPf3=w1600" alt="Airtable automation" loading="lazy" /><div class="ss-label"><span>Airtable automation</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1n8N1Z0RStx8AdIzVh1dtrQu_jUmIslqE/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">04</span><img src="https://lh3.googleusercontent.com/d/1n8N1Z0RStx8AdIzVh1dtrQu_jUmIslqE=w1600" alt="Automate Blog and Social Media Post" loading="lazy" /><div class="ss-label"><span>Blog &amp; Social posting</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1nvswqSA3EGI2Q-32xOSJWnRUXOBrrs6x/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">05</span><img src="https://lh3.googleusercontent.com/d/1nvswqSA3EGI2Q-32xOSJWnRUXOBrrs6x=w1600" alt="Automated Email Campaigns" loading="lazy" /><div class="ss-label"><span>Email Campaigns</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1sQInnpo_cS4xfRBCDjn62cjtQsm1Vub1/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">06</span><img src="https://lh3.googleusercontent.com/d/1sQInnpo_cS4xfRBCDjn62cjtQsm1Vub1=w1600" alt="Customized Telegram Bot" loading="lazy" /><div class="ss-label"><span>Telegram Bot</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1GCoKVNMlIb7aSZasKa-r463jEWAgNHxv/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">07</span><img src="https://lh3.googleusercontent.com/d/1GCoKVNMlIb7aSZasKa-r463jEWAgNHxv=w1600" alt="Daily Posting Automation" loading="lazy" /><div class="ss-label"><span>Daily Posting</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1gn8ryoMNHWrWNP8Gx7XXDqhyLUMgudYF/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">08</span><img src="https://lh3.googleusercontent.com/d/1gn8ryoMNHWrWNP8Gx7XXDqhyLUMgudYF=w1600" alt="Email Sequence Automation" loading="lazy" /><div class="ss-label"><span>Email Sequence</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1QEG5G65Aa9nsKYS9xfIGKQyezHf-dGit/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">09</span><img src="https://lh3.googleusercontent.com/d/1QEG5G65Aa9nsKYS9xfIGKQyezHf-dGit=w1600" alt="Facebook ads to Google Sheet Automation" loading="lazy" /><div class="ss-label"><span>FB Ads → Sheets</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1Tw1nyo9m_IlAkcMtnjIyMJp7PQEnpRYD/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">10</span><img src="https://lh3.googleusercontent.com/d/1Tw1nyo9m_IlAkcMtnjIyMJp7PQEnpRYD=w1600" alt="Instagram Carousel Automation" loading="lazy" /><div class="ss-label"><span>IG Carousel</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1wkXy1X78wCSlcmv1g2NDk9IVAUcd06PL/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">11</span><img src="https://lh3.googleusercontent.com/d/1wkXy1X78wCSlcmv1g2NDk9IVAUcd06PL=w1600" alt="Instagram Reels Creation Automation" loading="lazy" /><div class="ss-label"><span>IG Reels Creation</span><span class="open">View ↗</span></div></a>
+        <a class="ss-card" href="https://drive.google.com/file/d/1OebR2R-396IFAsWXCgHUhmrQOcPfCTre/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">12</span><img src="https://lh3.googleusercontent.com/d/1OebR2R-396IFAsWXCgHUhmrQOcPfCTre=w1600" alt="Outbound Call automation" loading="lazy" /><div class="ss-label"><span>Outbound Call</span><span class="open">View ↗</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zapier section -->
+  <section class="platform-section">
+    <div class="platform-head">
+      <span class="num">03</span>
+      <h2>Zapier <em>automation projects</em></h2>
+      <span class="count">Onboarding flow + workflow screenshots</span>
+    </div>
+    <div class="ss-grid">
+      <a class="ss-card" href="https://drive.google.com/file/d/1pfBTNNb2hvb9uc7koLyRc8yk2OwyW1eU/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">01</span>
+        <img src="https://lh3.googleusercontent.com/d/1pfBTNNb2hvb9uc7koLyRc8yk2OwyW1eU=w1600" alt="Onboarding flow, Zap webhook configuration" loading="lazy" />
+        <div class="ss-label"><span>Onboarding flow · Zap webhook</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1uW1k2_QmBE8SsYshSROmq9ES4rTeeVKy/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">02</span>
+        <img src="https://lh3.googleusercontent.com/d/1uW1k2_QmBE8SsYshSROmq9ES4rTeeVKy=w1600" alt="Zapier workflow detail" loading="lazy" />
+        <div class="ss-label"><span>Workflow detail · 02</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1tw3DVNbc6G1gcMcTvBxgD-qcApyLFnOj/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">03</span>
+        <img src="https://lh3.googleusercontent.com/d/1tw3DVNbc6G1gcMcTvBxgD-qcApyLFnOj=w1600" alt="Zapier workflow detail" loading="lazy" />
+        <div class="ss-label"><span>Workflow detail · 03</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/16MaF6hosdoh_xlM6DBD9lw7R3DeRFzZp/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">04</span>
+        <img src="https://lh3.googleusercontent.com/d/16MaF6hosdoh_xlM6DBD9lw7R3DeRFzZp=w1600" alt="Zapier workflow detail" loading="lazy" />
+        <div class="ss-label"><span>Workflow detail · 04</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1-V0RCsvMbwOHd2HLlVlA00ygb41t2kyz/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">05</span>
+        <img src="https://lh3.googleusercontent.com/d/1-V0RCsvMbwOHd2HLlVlA00ygb41t2kyz=w1600" alt="Zapier workflow detail" loading="lazy" />
+        <div class="ss-label"><span>Workflow detail · 05</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1tcbvwOxyrimc5JdqdFpnZvXn0f8OcPgL/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">06</span>
+        <img src="https://lh3.googleusercontent.com/d/1tcbvwOxyrimc5JdqdFpnZvXn0f8OcPgL=w1600" alt="Zapier workflow detail" loading="lazy" />
+        <div class="ss-label"><span>Workflow detail · 06</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1TtEmXIkvwUIffaWoMVBq5xpITdkduOCY/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">07</span>
+        <img src="https://lh3.googleusercontent.com/d/1TtEmXIkvwUIffaWoMVBq5xpITdkduOCY=w1600" alt="Zap automation overview" loading="lazy" />
+        <div class="ss-label"><span>Zap automation overview</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1CDf3D-0DrpIgHSz_rv87Dqqp9XCnzcFg/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">08</span>
+        <img src="https://lh3.googleusercontent.com/d/1CDf3D-0DrpIgHSz_rv87Dqqp9XCnzcFg=w1600" alt="Zapier workflow detail" loading="lazy" />
+        <div class="ss-label"><span>Workflow detail · 08</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1S1q96d2TVyXJdN-bwjOVxtTC8Ursvm05/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">09</span>
+        <img src="https://lh3.googleusercontent.com/d/1S1q96d2TVyXJdN-bwjOVxtTC8Ursvm05=w1600" alt="Zapier workflow detail" loading="lazy" />
+        <div class="ss-label"><span>Workflow detail · 09</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1jABWjqFhUizS5htaFZzFpJl26ug5h0H4/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">10</span>
+        <img src="https://lh3.googleusercontent.com/d/1jABWjqFhUizS5htaFZzFpJl26ug5h0H4=w1600" alt="Zapier workflow detail" loading="lazy" />
+        <div class="ss-label"><span>Workflow detail · 10</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1ElSzUmFzDdCVdbW0RP1RYe11jrOtP6aC/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">11</span>
+        <img src="https://lh3.googleusercontent.com/d/1ElSzUmFzDdCVdbW0RP1RYe11jrOtP6aC=w1600" alt="Zapier workflow detail" loading="lazy" />
+        <div class="ss-label"><span>Workflow detail · 11</span><span class="open">View ↗</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- GoHighLevel section -->
+  <section class="platform-section">
+    <div class="platform-head">
+      <span class="num">04</span>
+      <h2>GoHighLevel <em>automation projects</em></h2>
+      <span class="count">22 systems</span>
+    </div>
+    <div class="ss-grid">
+      <a class="ss-card" href="https://drive.google.com/file/d/13j5LW0Png3V2KIMKMvJtXJBC5r3VC2R4/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">01</span><img src="https://lh3.googleusercontent.com/d/13j5LW0Png3V2KIMKMvJtXJBC5r3VC2R4=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 01</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1oYVG97VfdCyrimvoccCgQ_rMqYz2PK4D/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">02</span><img src="https://lh3.googleusercontent.com/d/1oYVG97VfdCyrimvoccCgQ_rMqYz2PK4D=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 02</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1iBqSa_vDVNR6PrDUrtp2ztygUopxW1ZC/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">03</span><img src="https://lh3.googleusercontent.com/d/1iBqSa_vDVNR6PrDUrtp2ztygUopxW1ZC=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 03</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1WuvpECuvskTOpJHZZCgOV16xcRG0w-43/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">04</span><img src="https://lh3.googleusercontent.com/d/1WuvpECuvskTOpJHZZCgOV16xcRG0w-43=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 04</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1TvzENaHu-GKm1aL3wx8UEjcKNNjcH6kG/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">05</span><img src="https://lh3.googleusercontent.com/d/1TvzENaHu-GKm1aL3wx8UEjcKNNjcH6kG=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 05</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1PK_f0u92hgFLcTn-v_9yDC6BkzvuGhZn/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">06</span><img src="https://lh3.googleusercontent.com/d/1PK_f0u92hgFLcTn-v_9yDC6BkzvuGhZn=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 06</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1AjQEzZvNypUljB-VnJgSS0Dn4hPCGoTx/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">07</span><img src="https://lh3.googleusercontent.com/d/1AjQEzZvNypUljB-VnJgSS0Dn4hPCGoTx=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 07</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1B-1KI2ZcUhDmez29xM29-3DBwxxryq78/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">08</span><img src="https://lh3.googleusercontent.com/d/1B-1KI2ZcUhDmez29xM29-3DBwxxryq78=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 08</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1PWfeqxH8Bdr1QOXiU_9IYO6iDhF076SK/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">09</span><img src="https://lh3.googleusercontent.com/d/1PWfeqxH8Bdr1QOXiU_9IYO6iDhF076SK=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 09</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/15ZVWfpemK_tz4-hDIOL1jlkQslPAGPKQ/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">10</span><img src="https://lh3.googleusercontent.com/d/15ZVWfpemK_tz4-hDIOL1jlkQslPAGPKQ=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 10</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/164rtTVm6EVvsTtQywTDY_BKXkovoZLST/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">11</span><img src="https://lh3.googleusercontent.com/d/164rtTVm6EVvsTtQywTDY_BKXkovoZLST=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 11</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1KkxvDf_fQCn4wFRyBQhIpHjt1MmtcIj-/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">12</span><img src="https://lh3.googleusercontent.com/d/1KkxvDf_fQCn4wFRyBQhIpHjt1MmtcIj-=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 12</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1UOdpBRNeBSBZF0JWswtTm4P_EqDVF1JA/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">13</span><img src="https://lh3.googleusercontent.com/d/1UOdpBRNeBSBZF0JWswtTm4P_EqDVF1JA=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 13</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1D8iomtRqc-55FdwqJJ61t8DruPtZpYKc/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">14</span><img src="https://lh3.googleusercontent.com/d/1D8iomtRqc-55FdwqJJ61t8DruPtZpYKc=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 14</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/12EjLlPNNDV2a91YjVxbI_Ilc_4sO3BMA/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">15</span><img src="https://lh3.googleusercontent.com/d/12EjLlPNNDV2a91YjVxbI_Ilc_4sO3BMA=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 15</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/19hAUNW50yGSCwtH8birX_y0DqQZ5KN3W/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">16</span><img src="https://lh3.googleusercontent.com/d/19hAUNW50yGSCwtH8birX_y0DqQZ5KN3W=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 16</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1HIL_urHJqLQqbn9xR4xNwMyxNt4pJ47Z/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">17</span><img src="https://lh3.googleusercontent.com/d/1HIL_urHJqLQqbn9xR4xNwMyxNt4pJ47Z=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 17</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1TS-vgU2-oifygqa7UdDibaMgeqGGiSZx/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">18</span><img src="https://lh3.googleusercontent.com/d/1TS-vgU2-oifygqa7UdDibaMgeqGGiSZx=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 18</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1S5BVj5fG2AKnoTPTqxvS_JaoGPUoUlpr/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">19</span><img src="https://lh3.googleusercontent.com/d/1S5BVj5fG2AKnoTPTqxvS_JaoGPUoUlpr=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 19</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1kw7CBGUHLq1a3cQLZ29flH4ShguT-TMp/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">20</span><img src="https://lh3.googleusercontent.com/d/1kw7CBGUHLq1a3cQLZ29flH4ShguT-TMp=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 20</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1Zysw5nQGokUmVp3eWy1B-ig07DgEqohq/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">21</span><img src="https://lh3.googleusercontent.com/d/1Zysw5nQGokUmVp3eWy1B-ig07DgEqohq=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 21</span><span class="open">View ↗</span></div></a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1AURh2QU06psFX1uqrwLUjTCJSqIpwdZY/view" target="_blank" rel="noopener noreferrer"><span class="ss-num">22</span><img src="https://lh3.googleusercontent.com/d/1AURh2QU06psFX1uqrwLUjTCJSqIpwdZY=w1600" alt="GHL automation screenshot" loading="lazy" /><div class="ss-label"><span>GHL build · 22</span><span class="open">View ↗</span></div></a>
+    </div>
+  </section>
+
+  <!-- Source links -->
+  <div class="source-links">
+    <h3>Source documentation &amp; assets</h3>
+    <ul>
+      <li>
+        <a href="https://docs.google.com/document/d/1GagZSTQJUprvI63GR1sn01rZ4PzLcLtb8UuPKxmBLpE/edit" target="_blank" rel="noopener noreferrer">
+          <span style="color: var(--accent);">●</span>
+          <span>n8n automation projects, full write-up</span>
+          <span class="arrow">↗</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://docs.google.com/document/d/10ZfIQWsBnO3UqStz38JLYBg1AyvbxWLwYT7WqhfUrFs/edit" target="_blank" rel="noopener noreferrer">
+          <span style="color: var(--accent);">●</span>
+          <span>Make automation projects, full list</span>
+          <span class="arrow">↗</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://drive.google.com/drive/folders/1HhuINQ7vWIEtmf2plZ6Nmfr6UkOpNB_9" target="_blank" rel="noopener noreferrer">
+          <span style="color: var(--accent);">●</span>
+          <span>Make automation projects, screenshots folder</span>
+          <span class="arrow">↗</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://drive.google.com/drive/folders/12e3E4zESivqrl5PEVnuRGIX_hM3MMtKI" target="_blank" rel="noopener noreferrer">
+          <span style="color: var(--accent);">●</span>
+          <span>Zapier automation projects, screenshots folder</span>
+          <span class="arrow">↗</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://drive.google.com/drive/folders/1MmQCm0zHqxjyO_NCOrdstS23jJxZPWq6" target="_blank" rel="noopener noreferrer">
+          <span style="color: var(--accent);">●</span>
+          <span>n8n automation projects, screenshots folder</span>
+          <span class="arrow">↗</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://drive.google.com/drive/folders/18TstBqPY6-Ih5VMphH3y8bIJfEFg7Sto" target="_blank" rel="noopener noreferrer">
+          <span style="color: var(--accent);">●</span>
+          <span>GoHighLevel automation projects, screenshots folder</span>
+          <span class="arrow">↗</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://drive.google.com/file/d/1AqeuL_jirkqUth2MI8fJHqlhDvdTfw39/view" target="_blank" rel="noopener noreferrer">
+          <span style="color: var(--accent);">●</span>
+          <span>AI automation system sample works, video walkthrough</span>
+          <span class="arrow">↗</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="final-cta">
+    <div class="cta-card">
+      <h3>Want a system like one of these for your business?</h3>
+      <p>30 minutes. We'll trace your current workflow and scope the smallest version of the system that would move the needle.</p>
+      <a href="/book.html" class="cta-button">Book a discovery call
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-row">
+    <div>Full Stack AI Development</div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/john-carlo-caintic-6193a8268/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:cainticjohncarlo@gmail.com">Email</a>
+    </div>
+  </div>
+  <div class="footer-row bottom">
+    <span>© 2026, All rights reserved</span>
+    <div class="legal">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

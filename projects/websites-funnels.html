@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Websites &amp; Funnels Sample Works, John Carlo Caintic</title>
+<meta name="description" content="Custom websites and high-converting funnels built for coaches, agencies, and local businesses. Live project gallery from John Carlo Caintic." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/blog/blog.css" />
+<style>
+  .proj-hero {
+    max-width: 980px;
+    margin: 0 auto 64px;
+    text-align: center;
+  }
+  .proj-hero .eyebrow {
+    font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px;
+  }
+  .proj-hero h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.02; letter-spacing: -0.03em;
+    text-wrap: balance; margin-bottom: 18px;
+  }
+  .proj-hero h1 em { font-style: italic; color: var(--accent); }
+  .proj-hero p {
+    font-size: clamp(17px, 1.3vw, 20px);
+    color: var(--ink-dim); line-height: 1.55;
+    max-width: 720px; margin: 0 auto;
+  }
+
+  .site-grid {
+    max-width: 1200px; margin: 0 auto 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+  }
+  .site-card {
+    display: flex; flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--bg-elev);
+    overflow: hidden;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .25s, box-shadow .25s;
+    text-decoration: none; color: inherit;
+  }
+  .site-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45),
+                0 0 24px color-mix(in oklab, var(--accent) 20%, transparent);
+  }
+  .site-card .thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--bg-soft);
+  }
+  .site-card .thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .site-card:hover .thumb img { transform: scale(1.04); }
+  .site-card .thumb-fallback {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--ink-dim);
+    background:
+      linear-gradient(135deg, var(--bg-elev) 0%, var(--bg-soft) 100%),
+      radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 25%, transparent), transparent 60%);
+    background-blend-mode: screen;
+  }
+  .site-card .thumb-fallback .domain-large {
+    font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 32px);
+    font-style: italic; color: var(--accent); margin-bottom: 8px;
+  }
+  .site-card .thumb-fallback .label {
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .site-card .num-badge {
+    position: absolute; left: 16px; top: 16px;
+    font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+    color: var(--accent-ink); background: var(--accent);
+    padding: 5px 10px; border-radius: 999px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    z-index: 2;
+  }
+  .site-card .content {
+    padding: 22px 24px 24px;
+    display: flex; flex-direction: column; gap: 8px;
+    flex-grow: 1;
+  }
+  .site-card .content h3 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: 22px; line-height: 1.15; letter-spacing: -0.015em;
+  }
+  .site-card .content .domain {
+    font-family: var(--font-mono); font-size: 12px;
+    color: var(--ink-dim); letter-spacing: 0.04em;
+  }
+  .site-card .content .visit {
+    margin-top: auto; padding-top: 14px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-mono); font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .site-card .content .visit .arrow {
+    transition: transform .25s;
+  }
+  .site-card:hover .content .visit .arrow {
+    transform: translate(4px, -4px);
+  }
+
+  .final-cta { max-width: 980px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<div class="nav-wrap">
+  <nav class="nav-pill">
+    <a href="/" class="brand">John<span>Carlo</span></a>
+    <div class="links">
+      <a href="/#services">Systems</a>
+      <a href="/#about">Experience</a>
+      <a href="/#work">Sample Works</a>
+      <a href="/#testimonials">Testimonials</a>
+      <a href="/book.html">Contact</a>
+    </div>
+    <a href="/book.html" class="cta">Let's talk
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </a>
+  </nav>
+</div>
+
+<main>
+  <div style="max-width: 1200px; margin: 0 auto 32px;">
+    <a href="/#work" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11 7H3m3-3-3 3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      Back to sample works
+    </a>
+  </div>
+
+  <div class="proj-hero">
+    <div class="eyebrow">● P-04 · Websites &amp; Funnels</div>
+    <h1>Custom <em>websites</em> and high-converting <em>funnels</em>, shipped live.</h1>
+    <p>Thirteen production builds across coaching, agencies, healthcare, local services, and SaaS. Each one engineered for conversion, branding, copy, automations, integrations, and pixel-tight design. Click any card to visit the live site.</p>
+  </div>
+
+  <div class="site-grid">
+
+    <a class="site-card" href="https://disruptorsmedia.com/" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">01</span>
+        <img src="/projects/assets/disruptorsmedia.png" alt="Disruptors Media" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">Disruptors Media</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>Disruptors Media</h3>
+        <span class="domain">disruptorsmedia.com</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://madeea.ai/" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">02</span>
+        <img src="/projects/assets/madeea.png" alt="MadEEA AI" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">MadEEA AI</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>MadEEA AI</h3>
+        <span class="domain">madeea.ai</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://newwine.digital/" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">03</span>
+        <img src="/projects/assets/newwine.png" alt="New Wine Digital" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">New Wine Digital</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>New Wine Digital</h3>
+        <span class="domain">newwine.digital</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://www.therowhouse.com/" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">04</span>
+        <img src="/projects/assets/therowhouse.png" alt="The Row House" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">The Row House</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>The Row House</h3>
+        <span class="domain">therowhouse.com</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://7figurebuilder.com/optin" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">05</span>
+        <img src="/projects/assets/7figurebuilder-optin.png" alt="7-Figure Builder, Opt-in funnel" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">7-Figure Builder</div>
+          <div class="label">● Opt-in funnel</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>7-Figure Builder, Opt-in</h3>
+        <span class="domain">7figurebuilder.com/optin</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://7figurebuilder.com/starter-kit" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">06</span>
+        <img src="/projects/assets/7figurebuilder-starter-kit.png" alt="7-Figure Builder, Starter Kit funnel" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">7-Figure Builder</div>
+          <div class="label">● Starter kit funnel</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>7-Figure Builder, Starter Kit</h3>
+        <span class="domain">7figurebuilder.com/starter-kit</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://atom-fitness-site2-clone.vercel.app/" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">07</span>
+        <img src="/projects/assets/atom-fitness.png" alt="Atom Fitness" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">Atom Fitness</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>Atom Fitness</h3>
+        <span class="domain">atom-fitness-site2-clone.vercel.app</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://beautybizpro.com/" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">08</span>
+        <img src="/projects/assets/beautybizpro.png" alt="Beauty Biz Pro" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">Beauty Biz Pro</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>Beauty Biz Pro</h3>
+        <span class="domain">beautybizpro.com</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://aipropartner.com/home" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">09</span>
+        <img src="/projects/assets/aipropartner.png" alt="AI Pro Partner" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">AI Pro Partner</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>AI Pro Partner</h3>
+        <span class="domain">aipropartner.com</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://www.thediscdoctor.com/" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">10</span>
+        <img src="/projects/assets/thediscdoctor.png" alt="The Disc Doctor" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">The Disc Doctor</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>The Disc Doctor</h3>
+        <span class="domain">thediscdoctor.com</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://datadrivendoc.com/home" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">11</span>
+        <img src="/projects/assets/datadrivendoc.png" alt="Data Driven Doc" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">Data Driven Doc</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>Data Driven Doc</h3>
+        <span class="domain">datadrivendoc.com</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://yourpowersuite.com/" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">12</span>
+        <img src="/projects/assets/yourpowersuite.png" alt="Your Power Suite" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">Your Power Suite</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>Your Power Suite</h3>
+        <span class="domain">yourpowersuite.com</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://leadkast.com/" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">13</span>
+        <img src="/projects/assets/leadkast.png" alt="LeadKast" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">LeadKast</div>
+          <div class="label">● Live build</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>LeadKast</h3>
+        <span class="domain">leadkast.com</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="final-cta">
+    <div class="cta-card">
+      <h3>Want a site like one of these?</h3>
+      <p>30-minute call. We'll talk through your business, your goals, and scope a site or funnel that ships in weeks, not months.</p>
+      <a href="/book.html" class="cta-button">Book a discovery call
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-row">
+    <div>Full Stack AI Development</div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/john-carlo-caintic-6193a8268/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:cainticjohncarlo@gmail.com">Email</a>
+    </div>
+  </div>
+  <div class="footer-row bottom">
+    <span>© 2026, All rights reserved</span>
+    <div class="legal">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
