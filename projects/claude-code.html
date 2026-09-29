@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Claude Code, John Carlo Caintic</title>
+<meta name="description" content="Production builds shipped with Claude Code, AI systems, AI agents, automation workflows, websites, dashboards, and online applications, end-to-end engineering at the speed of prompting." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/blog/blog.css" />
+<style>
+  .proj-hero { max-width: 980px; margin: 0 auto 64px; text-align: center; }
+  .proj-hero .eyebrow { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; }
+  .proj-hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 6vw, 72px); line-height: 1.02; letter-spacing: -0.03em; text-wrap: balance; margin-bottom: 18px; }
+  .proj-hero h1 em { font-style: italic; color: var(--accent); }
+  .proj-hero p { font-size: clamp(17px, 1.3vw, 20px); color: var(--ink-dim); line-height: 1.55; max-width: 720px; margin: 0 auto; }
+
+  .cat-nav { max-width: 1100px; margin: 0 auto 64px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+  .cat-nav a {
+    font-family: var(--font-mono); font-size: 12px;
+    padding: 10px 18px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--bg-elev);
+    color: var(--ink-dim); letter-spacing: 0.06em; text-transform: uppercase;
+    transition: border-color .25s, color .25s, background .25s;
+  }
+  .cat-nav a:hover { border-color: var(--accent); color: var(--accent); background: color-mix(in oklab, var(--accent) 8%, transparent); }
+  .cat-nav a .num { color: var(--ink-mute); margin-right: 8px; }
+  .cat-nav a:hover .num { color: var(--accent); }
+
+  .platform-section { max-width: 1200px; margin: 0 auto 80px; scroll-margin-top: 100px; }
+  .platform-head {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 32px; padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .platform-head .num { font-family: var(--font-mono); font-size: 13px; color: var(--ink-mute); letter-spacing: 0.1em; }
+  .platform-head h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.05; letter-spacing: -0.025em; }
+  .platform-head h2 em { font-style: italic; color: var(--accent); }
+  .platform-head .count { margin-left: auto; font-family: var(--font-mono); font-size: 12px; color: var(--ink-dim); letter-spacing: 0.08em; }
+
+  /* Live site cards (image + name + URL + visit) */
+  .live-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .live-card {
+    display: flex; flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--bg-elev);
+    overflow: hidden;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .25s, box-shadow .25s;
+    text-decoration: none; color: inherit;
+  }
+  .live-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 24px color-mix(in oklab, var(--accent) 20%, transparent);
+  }
+  .live-card .thumb {
+    position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-soft);
+  }
+  .live-card .thumb img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .live-card:hover .thumb img { transform: scale(1.04); }
+  .live-card .num-badge {
+    position: absolute; left: 16px; top: 16px;
+    font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+    color: var(--accent-ink); background: var(--accent);
+    padding: 5px 10px; border-radius: 999px;
+    letter-spacing: 0.08em; text-transform: uppercase; z-index: 2;
+  }
+  .live-card .content {
+    padding: 22px 24px 24px;
+    display: flex; flex-direction: column; gap: 8px;
+    flex-grow: 1;
+  }
+  .live-card .content h3 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: 22px; line-height: 1.15; letter-spacing: -0.015em;
+  }
+  .live-card .content .domain {
+    font-family: var(--font-mono); font-size: 12px; color: var(--ink-dim); letter-spacing: 0.04em;
+  }
+  .live-card .content .visit {
+    margin-top: auto; padding-top: 14px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .live-card .content .visit .arrow { transition: transform .25s; }
+  .live-card:hover .content .visit .arrow { transform: translate(4px, -4px); }
+
+  /* Screenshot grid (used for Drive screenshots) */
+  .ss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+  .ss-card {
+    border: 1px solid var(--line); border-radius: 14px;
+    background: var(--bg-elev); aspect-ratio: 4 / 3;
+    overflow: hidden; position: relative;
+    transition: border-color .25s, transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .25s;
+    display: block; text-decoration: none; color: inherit;
+  }
+  .ss-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 24px color-mix(in oklab, var(--accent) 20%, transparent); }
+  .ss-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.2,.7,.2,1); background: var(--bg-soft); }
+  .ss-card:hover img { transform: scale(1.03); }
+  .ss-card .ss-label {
+    position: absolute; left: 12px; bottom: 12px; right: 12px;
+    font-family: var(--font-mono); font-size: 11px; color: var(--ink);
+    background: rgba(5,8,16,0.85); padding: 6px 10px; border-radius: 6px;
+    letter-spacing: 0.05em; backdrop-filter: blur(8px);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .ss-card .ss-label .open { color: var(--accent); font-size: 11px; }
+  .ss-card .ss-num {
+    position: absolute; left: 12px; top: 12px;
+    font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+    color: var(--accent-ink); background: var(--accent);
+    padding: 4px 8px; border-radius: 999px;
+    letter-spacing: 0.08em; text-transform: uppercase; z-index: 2;
+  }
+
+  .group-label {
+    font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin: 32px 0 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .group-label::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+  .group-label:first-child { margin-top: 0; }
+
+  /* Featured agent card (video + description) */
+  .agent-feature {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--bg-elev);
+    overflow: hidden;
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .agent-feature:hover {
+    border-color: var(--accent);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45),
+                0 0 24px color-mix(in oklab, var(--accent) 16%, transparent);
+  }
+  .agent-feature .video {
+    background: #000;
+    position: relative;
+    min-height: 360px;
+  }
+  .agent-feature .video iframe {
+    width: 100%; height: 100%; border: none; display: block;
+    position: absolute; inset: 0;
+  }
+  .agent-feature .video .live-tag {
+    position: absolute; left: 16px; top: 16px;
+    font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+    color: var(--accent-ink); background: var(--accent);
+    padding: 4px 10px; border-radius: 999px;
+    letter-spacing: 0.08em; text-transform: uppercase; z-index: 2;
+  }
+  .agent-feature .body {
+    padding: 32px 32px;
+    display: flex; flex-direction: column; gap: 14px;
+    border-left: 1px solid var(--line);
+    min-width: 0;
+    overflow: visible;
+  }
+  .agent-feature .body .tag {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .agent-feature .body h3 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(24px, 2.4vw, 32px);
+    line-height: 1.1; letter-spacing: -0.02em;
+  }
+  .agent-feature .body h3 em { font-style: italic; color: var(--accent); }
+  .agent-feature .body p {
+    color: var(--ink-dim); font-size: 15px; line-height: 1.55;
+  }
+  .agent-feature .body ul {
+    list-style: none; display: flex; flex-direction: column; gap: 10px;
+    font-family: var(--font-sans); font-size: 14px;
+    color: var(--ink); letter-spacing: -0.005em; line-height: 1.45;
+    margin: 4px 0 0; padding: 0;
+  }
+  .agent-feature .body ul li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding-left: 0; word-break: break-word;
+  }
+  .agent-feature .body ul li::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+    margin-top: 8px;
+    box-shadow: 0 0 8px var(--accent);
+  }
+  @media (max-width: 880px) {
+    .agent-feature { grid-template-columns: 1fr; }
+    .agent-feature .video { min-height: 280px; }
+    .agent-feature .body { border-left: none; border-top: 1px solid var(--line); padding: 28px 24px; }
+  }
+
+  /* Empty-state placeholder for sections without screenshots yet */
+  .empty-state {
+    border: 1px dashed var(--line);
+    border-radius: 14px;
+    background: color-mix(in oklab, var(--bg-elev) 60%, transparent);
+    padding: 56px 32px;
+    text-align: center;
+    color: var(--ink-mute);
+  }
+  .empty-state .dot {
+    display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); margin-right: 10px;
+    box-shadow: 0 0 12px var(--accent);
+    animation: empty-pulse 2s ease-in-out infinite;
+    vertical-align: middle;
+  }
+  .empty-state .lead {
+    font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .empty-state .body {
+    font-family: var(--font-display); font-size: 18px; line-height: 1.45;
+    color: var(--ink-dim); max-width: 520px; margin: 0 auto;
+  }
+  @keyframes empty-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  .final-cta { max-width: 980px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<div class="page-bg" style="background-image: url('/projects/assets/bg-claude-code.jpg');" aria-hidden="true"></div>
+
+<div class="nav-wrap">
+  <nav class="nav-pill">
+    <a href="/" class="brand">John<span>Carlo</span></a>
+    <div class="links">
+      <a href="/#services">Systems</a>
+      <a href="/#about">Experience</a>
+      <a href="/#work">Sample Works</a>
+      <a href="/#testimonials">Testimonials</a>
+      <a href="/book.html">Contact</a>
+    </div>
+    <a href="/book.html" class="cta">Let's talk
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </a>
+  </nav>
+</div>
+
+<main>
+  <div style="max-width: 1200px; margin: 0 auto 32px;">
+    <a href="/#work" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11 7H3m3-3-3 3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      Back to sample works
+    </a>
+  </div>
+
+  <div class="proj-hero">
+    <div class="eyebrow">● Claude Code · AI-Assisted Engineering</div>
+    <h1>Production builds shipped <em>with Claude Code</em>.</h1>
+    <p>A growing library of real engineering work, AI systems and agents, automation workflows, websites, dashboards, and full online applications, all designed, written, integrated, and deployed end-to-end with Claude Code in the loop. Pick a category to jump in.</p>
+  </div>
+
+  <div class="cat-nav">
+    <a href="#ai-agents"><span class="num">01</span>AI Agents</a>
+    <a href="#dashboards"><span class="num">02</span>Dashboards</a>
+    <a href="#online-applications"><span class="num">03</span>Online &amp; Web Apps</a>
+    <a href="#websites"><span class="num">04</span>Websites</a>
+    <a href="#automation-workflows"><span class="num">05</span>Automation Workflows</a>
+  </div>
+
+  <!-- 01 AI Agents -->
+  <section id="ai-agents" class="platform-section">
+    <div class="platform-head">
+      <span class="num">01</span>
+      <h2><em>AI agents</em></h2>
+      <span class="count">1 featured agent</span>
+    </div>
+    <div class="agent-feature">
+      <div class="video">
+        <span class="live-tag">● Live demo</span>
+        <iframe src="https://drive.google.com/file/d/11nFrUF3RjoloRkw_kEex3tQihqVweGzL/preview" allow="autoplay" allowfullscreen></iframe>
+      </div>
+      <div class="body">
+        <span class="tag">● Featured Agent · Jarvis</span>
+        <h3><em>Jarvis Agent</em>, a personal AI operator.</h3>
+        <p>Jarvis is a custom AI assistant built end-to-end with Claude Code. It listens to natural-language requests, decides which tools to call, executes the work across your stack, and reports back, replacing what used to take five tabs and ten manual steps with a single conversation.</p>
+        <ul>
+          <li>Tool-calling across CRM, calendar, email, and web search</li>
+          <li>Persistent memory across sessions and tasks</li>
+          <li>Planning loop that breaks complex requests into executable steps</li>
+          <li>Human-in-the-loop handoff when judgement is needed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Dashboards -->
+  <section id="dashboards" class="platform-section">
+    <div class="platform-head">
+      <span class="num">02</span>
+      <h2><em>Dashboards</em></h2>
+      <span class="count">2 live builds</span>
+    </div>
+    <div class="live-grid">
+      <a class="live-card" href="https://lumiere-aesthetics-dashboard.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">01</span>
+          <img src="/projects/assets/lumiere-dashboard.png" alt="Lumiere Aesthetics dashboard" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>Lumiere Aesthetics Dashboard</h3>
+          <span class="domain">lumiere-aesthetics-dashboard.vercel.app</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+      <a class="live-card" href="https://7figurebuilder-meta-ads.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">02</span>
+          <img src="/projects/assets/7figurebuilder-meta-ads.png" alt="7-Figure Builder Meta Ads dashboard" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>7-Figure Builder, Meta Ads Dashboard</h3>
+          <span class="domain">7figurebuilder-meta-ads.vercel.app</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 03 Online Applications -->
+  <section id="online-applications" class="platform-section">
+    <div class="platform-head">
+      <span class="num">03</span>
+      <h2>Online &amp; web <em>applications system</em></h2>
+      <span class="count">3 live builds</span>
+    </div>
+    <div class="live-grid">
+      <a class="live-card" href="https://kimbrough-legal-case-study.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">01</span>
+          <img src="/projects/assets/kimbrough-legal.png" alt="Kimbrough Legal case study application" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>Kimbrough Legal, Case Study App</h3>
+          <span class="domain">kimbrough-legal-case-study.vercel.app</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+      <a class="live-card" href="https://madeea-hub.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">02</span>
+          <img src="/projects/assets/madeea-hub.png" alt="MadEEA Hub application" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>MadEEA Hub</h3>
+          <span class="domain">madeea-hub.vercel.app</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+      <a class="live-card" href="https://madeea-io-delegate.lovable.app/auth" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">03</span>
+          <img src="/projects/assets/madeea-io-delegate.png" alt="MadEEA IO Delegate application" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>MadEEA IO Delegate</h3>
+          <span class="domain">madeea-io-delegate.lovable.app</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 04 Websites -->
+  <section id="websites" class="platform-section">
+    <div class="platform-head">
+      <span class="num">04</span>
+      <h2><em>Websites</em></h2>
+      <span class="count">6 live builds</span>
+    </div>
+    <div class="live-grid">
+      <a class="live-card" href="https://disruptorsmedia.com/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">01</span>
+          <img src="/projects/assets/disruptorsmedia.png" alt="Disruptors Media" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>Disruptors Media</h3>
+          <span class="domain">disruptorsmedia.com</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+      <a class="live-card" href="https://madeea.ai/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">02</span>
+          <img src="/projects/assets/madeea.png" alt="MadEEA AI" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>MadEEA AI</h3>
+          <span class="domain">madeea.ai</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+      <a class="live-card" href="https://newwine.digital/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">03</span>
+          <img src="/projects/assets/newwine.png" alt="New Wine Digital" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>New Wine Digital</h3>
+          <span class="domain">newwine.digital</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+      <a class="live-card" href="https://madeea-redesign.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">04</span>
+          <img src="/projects/assets/madeea-redesign-v2.png" alt="MadEEA AI redesign" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>MadEEA AI, Redesign</h3>
+          <span class="domain">madeea-redesign.vercel.app</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+      <a class="live-card" href="https://brainova.ai/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">05</span>
+          <img src="/projects/assets/brainova.png" alt="Brainova AI" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>Brainova AI</h3>
+          <span class="domain">brainova.ai</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+      <a class="live-card" href="https://go.cayafitnessclub.com/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">06</span>
+          <img src="/projects/assets/caya-fitness.png" alt="Caya Fitness Club" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>Caya Fitness Club</h3>
+          <span class="domain">go.cayafitnessclub.com</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 05 Automation Workflows -->
+  <section id="automation-workflows" class="platform-section">
+    <div class="platform-head">
+      <span class="num">05</span>
+      <h2>Automation <em>workflows</em></h2>
+      <span class="count">1 live system + 15 workflows</span>
+    </div>
+
+    <div class="group-label">Live agent system</div>
+    <div class="live-grid">
+      <a class="live-card" href="https://smart-move-social-content.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <div class="thumb">
+          <span class="num-badge">01</span>
+          <img src="/projects/assets/smart-move.png" alt="Smart Move Social Content agent system" loading="lazy" />
+        </div>
+        <div class="content">
+          <h3>Smart Move Social Content</h3>
+          <span class="domain">smart-move-social-content.vercel.app</span>
+          <span class="visit">Visit live <span class="arrow">↗</span></span>
+        </div>
+      </a>
+    </div>
+
+    <div class="group-label">n8n workflows built with Claude Code</div>
+    <div class="ss-grid">
+      <a class="ss-card" href="https://drive.google.com/file/d/1VleeyHoKFFwkyQ-MDQMX2dfdQa4rgBKl/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">01</span>
+        <img src="https://lh3.googleusercontent.com/d/1VleeyHoKFFwkyQ-MDQMX2dfdQa4rgBKl=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 01</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1i9VN_1s99Y8pEnK-aaqU7SR4Sj8xUhJL/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">02</span>
+        <img src="https://lh3.googleusercontent.com/d/1i9VN_1s99Y8pEnK-aaqU7SR4Sj8xUhJL=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 02</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/18EQserodMKk0dKZvJUdWIpjf8QUvhfb0/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">03</span>
+        <img src="https://lh3.googleusercontent.com/d/18EQserodMKk0dKZvJUdWIpjf8QUvhfb0=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 03</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1Ypgk6Le4Q9yv5eKSWEt66fQaSQSgW3WM/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">04</span>
+        <img src="https://lh3.googleusercontent.com/d/1Ypgk6Le4Q9yv5eKSWEt66fQaSQSgW3WM=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 04</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1ZJXVu_4hML9i5NIs2TfgdXzU9qFfxx0B/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">05</span>
+        <img src="https://lh3.googleusercontent.com/d/1ZJXVu_4hML9i5NIs2TfgdXzU9qFfxx0B=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 05</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/18XpktPY3DEVepljd2kysnNh12xzfSQRI/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">06</span>
+        <img src="https://lh3.googleusercontent.com/d/18XpktPY3DEVepljd2kysnNh12xzfSQRI=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 06</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1yvZwy70lYXCL8Du1Z9sOFdHNPWC8QuOO/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">07</span>
+        <img src="https://lh3.googleusercontent.com/d/1yvZwy70lYXCL8Du1Z9sOFdHNPWC8QuOO=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 07</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1yLWCVFROY7cctkBvhGGyEUviJPsbBhQI/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">08</span>
+        <img src="https://lh3.googleusercontent.com/d/1yLWCVFROY7cctkBvhGGyEUviJPsbBhQI=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 08</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1S7AxGZnisw84FGf5jgGUhEYb4uUQsKVY/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">09</span>
+        <img src="https://lh3.googleusercontent.com/d/1S7AxGZnisw84FGf5jgGUhEYb4uUQsKVY=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 09</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1BrBCXUL_1q186okqeLKdrHuAxgAuKmtg/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">10</span>
+        <img src="https://lh3.googleusercontent.com/d/1BrBCXUL_1q186okqeLKdrHuAxgAuKmtg=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 10</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1_3Ib1e6XmrUhSU1pLhg1JE2DWRFN_BdF/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">11</span>
+        <img src="https://lh3.googleusercontent.com/d/1_3Ib1e6XmrUhSU1pLhg1JE2DWRFN_BdF=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 11</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1jHwc4VAEHBkGwwQkhD6oooCw7XyuYEM_/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">12</span>
+        <img src="https://lh3.googleusercontent.com/d/1jHwc4VAEHBkGwwQkhD6oooCw7XyuYEM_=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 12</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1hRExCpzXz9RaMki2RPIojohgd_ZYTxvu/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">13</span>
+        <img src="https://lh3.googleusercontent.com/d/1hRExCpzXz9RaMki2RPIojohgd_ZYTxvu=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 13</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/1b0U0h-3RK4RpBbA4mQOBLu39BpvOGxpe/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">14</span>
+        <img src="https://lh3.googleusercontent.com/d/1b0U0h-3RK4RpBbA4mQOBLu39BpvOGxpe=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 14</span><span class="open">View ↗</span></div>
+      </a>
+      <a class="ss-card" href="https://drive.google.com/file/d/11nFrUF3RjoloRkw_kEex3tQihqVweGzL/view" target="_blank" rel="noopener noreferrer">
+        <span class="ss-num">15</span>
+        <img src="https://lh3.googleusercontent.com/d/11nFrUF3RjoloRkw_kEex3tQihqVweGzL=w1600" alt="n8n workflow screenshot" loading="lazy" />
+        <div class="ss-label"><span>n8n workflow · 15</span><span class="open">View ↗</span></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="final-cta">
+    <div class="cta-card">
+      <h3>Want something like this built for you?</h3>
+      <p>30-minute call. Tell me the workflow, site, dashboard, or app you've been putting off, and we'll scope a Claude Code-powered build that ships in days.</p>
+      <a href="/book.html" class="cta-button">Book a discovery call
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-row">
+    <div>Full Stack AI Development</div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/john-carlo-caintic-6193a8268/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:cainticjohncarlo@gmail.com">Email</a>
+    </div>
+  </div>
+  <div class="footer-row bottom">
+    <span>© 2026, All rights reserved</span>
+    <div class="legal">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

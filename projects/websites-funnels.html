@@ -119,9 +119,35 @@
   }
 
   .final-cta { max-width: 980px; margin: 0 auto; }
+  .video-wrap {
+    max-width: 980px; margin: 0 auto 64px;
+    border-radius: var(--radius-lg);
+    border: 1px solid color-mix(in oklab, var(--accent) 30%, var(--line));
+    background: var(--bg-elev);
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4),
+                0 0 32px color-mix(in oklab, var(--accent) 14%, transparent);
+  }
+  .video-wrap .label {
+    padding: 16px 24px;
+    font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-soft);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .video-wrap .label .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--ink-dim); text-transform: none; letter-spacing: 0.04em;
+  }
+  .video-wrap .frame { aspect-ratio: 16 / 9; background: #000; }
+  .video-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
 </style>
 </head>
 <body>
+
+<div class="page-bg" style="background-image: url('/projects/assets/bg-claude-code.jpg');" aria-hidden="true"></div>
 
 <div class="nav-wrap">
   <nav class="nav-pill">
@@ -150,7 +176,18 @@
   <div class="proj-hero">
     <div class="eyebrow">● P-04 · Websites &amp; Funnels</div>
     <h1>Custom <em>websites</em> and high-converting <em>funnels</em>, shipped live.</h1>
-    <p>Thirteen production builds across coaching, agencies, healthcare, local services, and SaaS. Each one engineered for conversion, branding, copy, automations, integrations, and pixel-tight design. Click any card to visit the live site.</p>
+    <p>Fourteen production builds across coaching, agencies, healthcare, local services, fitness, and SaaS. Each one engineered for conversion, branding, copy, automations, integrations, and pixel-tight design. Click any card to visit the live site.</p>
+  </div>
+
+  <!-- Video walkthrough -->
+  <div class="video-wrap">
+    <div class="label">
+      <span>● Video walkthrough</span>
+      <span class="pill">Websites &amp; Funnels, sample reel</span>
+    </div>
+    <div class="frame">
+      <iframe src="https://www.loom.com/embed/5a8eee452aab42689bc5839d37624049" allow="autoplay; fullscreen" allowfullscreen title="Websites and funnels walkthrough"></iframe>
+    </div>
   </div>
 
   <div class="site-grid">
@@ -251,7 +288,7 @@
       </div>
     </a>
 
-    <a class="site-card" href="https://atom-fitness-site2-clone.vercel.app/" target="_blank" rel="noopener noreferrer">
+    <a class="site-card" href="https://atommclonee.vercel.app/" target="_blank" rel="noopener noreferrer">
       <div class="thumb">
         <span class="num-badge">07</span>
         <img src="/projects/assets/atom-fitness.png" alt="Atom Fitness" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
@@ -262,7 +299,7 @@
       </div>
       <div class="content">
         <h3>Atom Fitness</h3>
-        <span class="domain">atom-fitness-site2-clone.vercel.app</span>
+        <span class="domain">atommclonee.vercel.app</span>
         <span class="visit">Visit live <span class="arrow">↗</span></span>
       </div>
     </a>
@@ -359,6 +396,22 @@
       <div class="content">
         <h3>LeadKast</h3>
         <span class="domain">leadkast.com</span>
+        <span class="visit">Visit live <span class="arrow">↗</span></span>
+      </div>
+    </a>
+
+    <a class="site-card" href="https://go.cayafitnessclub.com/" target="_blank" rel="noopener noreferrer">
+      <div class="thumb">
+        <span class="num-badge">14</span>
+        <img src="/projects/assets/caya-fitness.png" alt="Caya Fitness Club" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="thumb-fallback" style="display:none;">
+          <div class="domain-large">Caya Fitness Club</div>
+          <div class="label">● Live funnel</div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>Caya Fitness Club</h3>
+        <span class="domain">go.cayafitnessclub.com</span>
         <span class="visit">Visit live <span class="arrow">↗</span></span>
       </div>
     </a>

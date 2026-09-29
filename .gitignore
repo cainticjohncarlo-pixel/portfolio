@@ -1,1 +1,3 @@
 .vercel
+projects/assets/_cap_*.js
+.tmp/

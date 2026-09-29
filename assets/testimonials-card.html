@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Client Testimonials – John Carlo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #050520 0%, #0b0b38 35%, #10083a 65%, #160a48 100%);
+    min-height: 100vh;
+    padding: 64px 48px 72px;
+    color: #fff;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #15EBDC;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #fff;
+  }
+  .header h1 em {
+    font-style: italic;
+    color: #15EBDC;
+  }
+  .header p {
+    margin-top: 14px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ── Grid ── */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  /* ── Card ── */
+  .card {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 22px;
+    padding: 38px 34px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '\201C';
+    position: absolute;
+    top: -16px;
+    right: 26px;
+    font-size: 140px;
+    color: rgba(21,235,220,0.06);
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* top row: avatar + meta */
+  .top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(21,235,220,0.55);
+    background: linear-gradient(135deg, #15EBDC18, #6d28d920);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #15EBDC;
+    flex-shrink: 0;
+    letter-spacing: -1px;
+  }
+
+  .stars {
+    font-size: 18px;
+    color: #FFD700;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .name {
+    font-size: 15px;
+    font-weight: 700;
+    font-style: italic;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .role {
+    font-size: 12px;
+    color: rgba(255,255,255,0.42);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* quote body */
+  .quote {
+    font-size: 15.5px;
+    line-height: 1.78;
+    color: rgba(255,255,255,0.78);
+    flex: 1;
+  }
+
+  .hl { color: #15EBDC; font-weight: 600; }
+
+  /* bottom divider accent */
+  .accent-line {
+    width: 44px;
+    height: 2px;
+    background: linear-gradient(90deg, #15EBDC 0%, transparent 100%);
+    border-radius: 2px;
+  }
+
+  /* footer */
+  .footer {
+    text-align: center;
+    margin-top: 52px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.22);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <p class="eyebrow">// 07 — Testimonials</p>
+  <h1>What my <em>satisfied clients</em> can say.</h1>
+  <p>Real feedback from clients across marketing, automation, and web development.</p>
+</div>
+
+<div class="grid">
+
+  <!-- 1. Rich Wade -->
+  <div class="card">
+    <div class="top">
+      <div class="avatar">RW</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="name">Rich Wade</div>
+        <div class="role">CEO, Free Agent Marketing</div>
+      </div>
+    </div>
+    <p class="quote">
+      "John is a <span class="hl">multi-talented professional!</span> They delivered exceptional video editing,
+      stunning graphic designs, and built a sleek, functional website for our business. The
+      <span class="hl">cohesive branding and high-quality visuals exceeded our expectations.</span>"
+    </p>
+    <div class="accent-line"></div>
+  </div>
+
+  <!-- 2. Toi Walker -->
+  <div class="card">
+    <div class="top">
+      <div class="avatar">TW</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="name">Toi Walker</div>
+        <div class="role">Founder, New Identity Marketing</div>
+      </div>
+    </div>
+    <p class="quote">
+      "John did an outstanding job creating our <span class="hl">website and sales funnels!</span>
+      The design is sleek, user-friendly, and perfectly tailored to our brand. Their
+      <span class="hl">strategic approach to funnel building has already started generating leads
+      and boosting conversions.</span>"
+    </p>
+    <div class="accent-line"></div>
+  </div>
+
+  <!-- 3. Jamie Cattanach -->
+  <div class="card">
+    <div class="top">
+      <div class="avatar">JC</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="name">Jamie Cattanach</div>
+        <div class="role">CEO, High Efficiency Experts</div>
+      </div>
+    </div>
+    <p class="quote">
+      "John is a <span class="hl">true professional.</span> They understood our goals and delivered
+      beyond expectations, <span class="hl">helping us expand our audience and improve conversions.</span>"
+    </p>
+    <div class="accent-line"></div>
+  </div>
+
+  <!-- 4. Donna Berry -->
+  <div class="card">
+    <div class="top">
+      <div class="avatar">DB</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="name">Donna Berry</div>
+        <div class="role">Founder, Interplay Therapy</div>
+      </div>
+    </div>
+    <p class="quote">
+      "John brought <span class="hl">fresh ideas and an innovative strategy</span> to our marketing.
+      The results were outstanding, with a
+      <span class="hl">clear increase in our brand awareness and customer engagement.</span>"
+    </p>
+    <div class="accent-line"></div>
+  </div>
+
+  <!-- 5. Logan Sullivan -->
+  <div class="card">
+    <div class="top">
+      <div class="avatar">LS</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="name">Logan Sullivan</div>
+        <div class="role">Owner / Manager, Junk Punks Removal Services</div>
+      </div>
+    </div>
+    <p class="quote">
+      "John has been <span class="hl">incredibly professional</span>, and the quality of his work has been
+      <span class="hl">consistently impressive.</span>"
+    </p>
+    <div class="accent-line"></div>
+  </div>
+
+  <!-- 6. Cody Williams -->
+  <div class="card">
+    <div class="top">
+      <div class="avatar">CW</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="name">Cody Williams</div>
+        <div class="role">CEO, MEtrain Consulting</div>
+      </div>
+    </div>
+    <p class="quote">
+      "<span class="hl">Highly efficient, detail-oriented,</span> and consistently delivers top-notch
+      digital marketing support, helping to
+      <span class="hl">significantly grow my online presence and streamline operations.</span>"
+    </p>
+    <div class="accent-line"></div>
+  </div>
+
+</div>
+
+<p class="footer">These are some of the testimonials</p>
+
+</body>
+</html>
