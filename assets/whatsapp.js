@@ -8,7 +8,7 @@
   var NAME       = "John Carlo Caintic";
   var STATUS     = "Typically replies within a few hours";
   var AVATAR     = "/assets/wa-avatar.jpg";
-  var GREETING   = "Hi, I’m John Carlo! 👋\nHave a project in mind or need help with marketing, GHL, or automation?\nSend me a quick message about what you need, and I’ll personally get back to you with how I can help.";
+  var GREETING   = "Hi, I’m John Carlo! 👋\nLooking to build an AI agent, an AI system, or a custom app for your business?\nSend me a quick message about what you want to build, and I’ll personally get back to you with how I can help.";
   var PAGE_MESSAGES = {
     "/projects/chat-agents":      "Hi John Carlo, I saw your AI chatbot samples on " + SITE + " and want to talk about a project.",
     "/projects/voice-agents":     "Hi John Carlo, I saw your AI voice agent samples on " + SITE + " and want to talk about a project.",
@@ -17,7 +17,7 @@
     "/projects/claude-code":      "Hi John Carlo, I saw your Claude Code builds on " + SITE + " and want to talk about a project.",
     "/book":                      "Hi John Carlo, I'd like to book a call about a project."
   };
-  var DEFAULT_MESSAGE = "Hi John Carlo, I saw your portfolio on " + SITE + " and want to talk about a project.";
+  var DEFAULT_MESSAGE = "Hi John Carlo, I saw your AI systems and agent builds on " + SITE + " and want to talk about a project.";
   /* ------------------------------------------ */
 
   if (!WA_NUMBER || document.getElementById("jc-wa")) return;
