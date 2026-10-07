@@ -8,7 +8,7 @@
   var NAME       = "John Carlo Caintic";
   var STATUS     = "Typically replies within a few hours";
   var AVATAR     = "/assets/wa-avatar.jpg";
-  var GREETING   = "Hi there, I'm John Carlo. Thanks for checking out my work. Tell me a little about your project and I'll get back to you personally.";
+  var GREETING   = "Hi, I’m John Carlo! 👋\nHave a project in mind or need help with marketing, GHL, or automation?\nSend me a quick message about what you need, and I’ll personally get back to you with how I can help.";
   var PAGE_MESSAGES = {
     "/projects/chat-agents":      "Hi John Carlo, I saw your AI chatbot samples on " + SITE + " and want to talk about a project.",
     "/projects/voice-agents":     "Hi John Carlo, I saw your AI voice agent samples on " + SITE + " and want to talk about a project.",
@@ -63,6 +63,7 @@
     "font-size:14.5px;box-shadow:0 1px 1px rgba(0,0,0,.08)}",
     "#jc-wa .jcw-bubble:before{content:'';position:absolute;left:-8px;top:0;border-top:10px solid #fff;border-left:8px solid transparent}",
     "#jc-wa .jcw-bubble b{display:block;font-size:13px;color:#075E54;margin-bottom:3px}",
+    "#jc-wa .jcw-text{white-space:pre-line;display:block}",
     "#jc-wa .jcw-time{position:absolute;right:10px;bottom:5px;font-size:11px;color:#667781}",
     "#jc-wa .jcw-foot{padding:14px 16px 12px;background:#fff}",
     "#jc-wa textarea{width:100%;min-height:64px;max-height:140px;resize:vertical;border:1px solid #D9DEE2;border-radius:12px;padding:10px 12px;",
@@ -100,7 +101,7 @@
           '<div class="jcw-who"><p class="jcw-name" id="jcw-name">' + esc(NAME) + '</p><p class="jcw-status">' + esc(STATUS) + '</p></div>' +
           '<button type="button" class="jcw-close" aria-label="Close WhatsApp chat">&times;</button>' +
         '</div>' +
-        '<div class="jcw-body"><div class="jcw-bubble"><b>' + esc(NAME.split(" ").slice(0, 2).join(" ")) + '</b>' + esc(GREETING) + '<span class="jcw-time">' + esc(nowTime()) + '</span></div></div>' +
+        '<div class="jcw-body"><div class="jcw-bubble"><b>' + esc(NAME.split(" ").slice(0, 2).join(" ")) + '</b>' + '<span class="jcw-text">' + esc(GREETING) + '</span><span class="jcw-time">' + esc(nowTime()) + '</span></div></div>' +
         '<div class="jcw-foot">' +
           '<label for="jcw-msg" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Your message</label>' +
           '<textarea id="jcw-msg" rows="3" placeholder="Type your message"></textarea>' +
