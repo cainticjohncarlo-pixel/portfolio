@@ -566,40 +566,45 @@ function Hero() {
             alignSelf: "center",
           }}>
             <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--accent)", boxShadow: "0 0 12px var(--accent)" }} />
-            <span>AI Engineer + Automation Architect</span>
+            <span>Full-Stack AI Engineer + Automation Architect</span>
           </div>
           <h1 style={{
             fontFamily: "var(--font-display)", fontWeight: 400,
-            fontSize: "clamp(48px, 8.5vw, 132px)",
-            lineHeight: 0.92, letterSpacing: "-0.035em", textWrap: "balance",
+            fontSize: "clamp(44px, 7.4vw, 116px)",
+            lineHeight: 0.98, letterSpacing: "-0.035em", textWrap: "balance",
           }}>
-            Build. Automate.<br />
-            <span style={{ display: "inline-block", position: "relative" }}>
-              Scale<HighlightStroke />
-            </span> with <span style={{ color: "var(--accent)" }}>AI</span>.
+            I Build AI Systems<br />
+            That <span style={{ display: "inline-block", position: "relative", color: "var(--accent)" }}>
+              Actually Work<HighlightStroke />
+            </span>.
           </h1>
           <p style={{
             fontSize: "clamp(17px, 1.3vw, 20px)",
             color: "var(--ink-dim)", maxWidth: 640, lineHeight: 1.5,
             marginInline: "auto",
           }}>
-            I help businesses build AI-powered automation systems that
-            connect CRMs, workflows, AI agents, funnels, and backend
-            processes, turning repetitive tasks into scalable systems that
-            save time, improve lead conversion, and support business growth.
+            From intelligent AI agents to fully connected business
+            automations, I design and develop systems that make businesses
+            faster, smarter, and easier to scale.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
-            <Btn href="/book.html" primary>Book a discovery call</Btn>
-            <Btn href="#work">See the work</Btn>
+            <Btn href="#work" primary>Explore My Work</Btn>
+            <Btn href="/book.html">Let's Work Together</Btn>
           </div>
           <div style={{
-            display: "flex", gap: 24, marginTop: 8, flexWrap: "wrap",
-            fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink-mute)",
-            justifyContent: "center",
+            width: "min(100%, 720px)", marginTop: 4, paddingTop: 22,
+            borderTop: "1px solid var(--line)",
+            display: "flex", flexWrap: "wrap", justifyContent: "center",
+            alignItems: "center", gap: "8px 14px",
+            fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.04em",
+            color: "var(--ink-dim)",
           }}>
-            <span style={{ color: "var(--ink)" }}>Available for work / projects</span>
-            <Stat k="Response" v="< 24h" />
-            <Stat k="Engagement" v="Sprint-based" />
+            {["AI Agents", "Workflow Automation", "API Integrations", "Intelligent Applications"].map((c, i) => (
+              <span key={c} style={{ whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 14 }}>
+                {i > 0 && <span aria-hidden style={{ color: "var(--accent)" }}>•</span>}
+                {c}
+              </span>
+            ))}
           </div>
         </div>
       </div>
