@@ -2,6 +2,18 @@
   "redirects": [
     {
       "source": "/",
+      "has": [{ "type": "host", "value": "(?<old>johncalo\\.dev|www\\.johncalo\\.dev)" }],
+      "destination": "https://johncarloofficial.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "(?<old>johncalo\\.dev|www\\.johncalo\\.dev)" }],
+      "destination": "https://johncarloofficial.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
       "has": [{ "type": "host", "value": "www.johncarloofficial.com" }],
       "destination": "https://johncarloofficial.com/",
       "permanent": true
