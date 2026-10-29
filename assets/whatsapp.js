@@ -4,7 +4,7 @@
 (function () {
   /* ---------------- settings ---------------- */
   var WA_NUMBER  = "639512420940";                 /* country code + number, digits only */
-  var SITE       = "johncalo.dev";
+  var SITE       = location.hostname.replace(/^www\./, "") || "johncarloofficial.com";
   var NAME       = "John Carlo Caintic";
   var STATUS     = "Typically replies within a few hours";
   var AVATAR     = "/assets/wa-avatar.jpg";
