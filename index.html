@@ -246,6 +246,7 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+<link rel="stylesheet" href="/assets/mobile.css?v=a6be1282b0" data-mobile-css />
 </head>
 <body data-theme="cyber" data-density="comfortable">
 <div class="bg-canvas" aria-hidden="true">
@@ -364,7 +365,7 @@ function Section({ id, label, eyebrow, title, children, dense }) {
       position: "relative",
     }}>
       {(eyebrow || title) && (
-        <header style={{ display: "grid", gridTemplateColumns: "minmax(0, 220px) 1fr", gap: "clamp(24px, 5vw, 80px)", marginBottom: dense ? 40 : 64, alignItems: "baseline" }}>
+        <header className="sec-head" style={{ display: "grid", gridTemplateColumns: "minmax(0, 220px) 1fr", gap: "clamp(24px, 5vw, 80px)", marginBottom: dense ? 40 : 64, alignItems: "baseline" }}>
           <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink-mute)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
             {label && <div style={{ marginBottom: 8 }}>{label}</div>}
             {eyebrow && <div style={{ color: "var(--accent)" }}>● {eyebrow}</div>}
@@ -894,7 +895,7 @@ function Stack() {
   return (
     <Section id="stack" label="// 04" eyebrow="The stack"
       title={<>Tools I trust. <em style={{ color: "var(--accent)", fontStyle: "italic" }}>Battle-tested</em>.</>}>
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 220px) 1fr", gap: "clamp(24px, 5vw, 80px)" }}>
+      <div className="stack-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 220px) 1fr", gap: "clamp(24px, 5vw, 80px)" }}>
         <aside style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {Object.keys(groups).map((g) => (
             <div key={g} style={{
